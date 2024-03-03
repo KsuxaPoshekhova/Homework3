@@ -18,7 +18,7 @@ public class ApplicationForACardTest {
     WebDriver driver;
 
     @BeforeAll
-   static void setupAll() {
+    static void setupAll() {
         WebDriverManager.chromedriver().setup();
     }
 
@@ -40,11 +40,11 @@ public class ApplicationForACardTest {
 
     @Test
     public void testApplicationForACard() {
-        driver.findElements(By.cssSelector("[data-test-id='name'] input")).sendKeys("Пошехова-Ксения Анатольевна");
-        driver.findElements(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+7976543212");
-        driver.findElements(By.cssSelector("checkbox_box")).click();
-        driver.findElements(By.cssSelector("button.button")).click();
-        var actualTextElement = driver.findElement((By.cssSelector("[data-test-id='order-success']")));
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Пошехова-Ксения Анатольевна");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79765432122");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
+        driver.findElement(By.cssSelector("button.button")).click();
+        var actualTextElement = driver.findElement((By.cssSelector("[data-test-id=order-success]")));
         var actualText = actualTextElement.getText().trim();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", actualText);
         assertTrue(actualTextElement.isDisplayed());
